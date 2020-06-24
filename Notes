@@ -1,0 +1,7 @@
+Goal
+has_many :steps
+:mission - string, :deadline - datetime, :accomplished - boolean
+
+Step
+belongs_to :goal
+:forward - boolean, :statement - string, :date - datetime
