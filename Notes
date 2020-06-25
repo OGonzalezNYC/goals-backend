@@ -5,3 +5,48 @@ has_many :steps
 Step
 belongs_to :goal
 :forward - boolean, :statement - string, :date - datetime
+
+
+
+if deadline < DateTime.now
+  outcome = failure
+end
+
+
+
+
+For frontend:
+Make a note of the time at initial load.
+Calculate the amount of time left until midnight.
+Set a Timeout to reload the document after that time elapses.
+
+
+I use the following code:
+
+function resetAtMidnight() {
+    var now = new Date();
+    var night = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1, // the next day, ...
+        0, 0, 0 // ...at 00:00:00 hours
+    );
+    var msToMidnight = night.getTime() - now.getTime();
+
+    setTimeout(function() {
+        reset();              //      <-- This is the function being called at midnight.
+        resetAtMidnight();    //      Then, reset again next midnight.
+    }, msToMidnight);
+}
+I think there are legitimate use-cases for running a function at midnight. For example, in my case, I have a number of daily statistics displayed on a website. These statistics need to be reset if the website happens to be open at midnight.
+
+
+The Location.reload() method reloads the current URL, like the Refresh button.
+
+Reload the current document:
+
+location.reload();
+Definition and Usage
+The reload() method is used to reload the current document.
+
+The reload() method does the same as the reload button in your browser.
