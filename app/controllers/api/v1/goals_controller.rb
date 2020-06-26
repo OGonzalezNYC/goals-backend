@@ -1,6 +1,7 @@
 class Api::V1::GoalsController < ApplicationController
 
   def index
+#binding.pry FOR RAILS CONSOLE
     @goals = Goal.all
     render json: @goals, status: 200
   end
