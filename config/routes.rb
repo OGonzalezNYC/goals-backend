@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      resources :steps # this will enable me to access the steps resources withOUT going through goals
       resources :goals do
-        resources :steps
+        resources :steps # this enables me to access the steps resources THROUGH goals.
       end
     end
   end
