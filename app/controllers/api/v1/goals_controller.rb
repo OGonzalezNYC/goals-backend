@@ -14,6 +14,7 @@ class Api::V1::GoalsController < ApplicationController
 
 
   def create
+#binding.pry
     @goal = Goal.new(goal_params)
     if @goal.save
       render json: @goal, status: 200
@@ -45,7 +46,8 @@ class Api::V1::GoalsController < ApplicationController
 
 
   def goal_params
-    params.require(:goal).permit(:mission, :outcome, :deadline)
+    # params.require(:goal).permit(:mission, :outcome, :deadline)
+    params.require(:goal).permit(:mission, :outcome)
   end
 
 end

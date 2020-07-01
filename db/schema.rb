@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_030028) do
   create_table "goals", force: :cascade do |t|
     t.string "mission"
     t.string "outcome", default: "Get after it!"
-    t.datetime "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

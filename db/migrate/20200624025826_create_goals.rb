@@ -3,7 +3,7 @@ class CreateGoals < ActiveRecord::Migration[6.0]
     create_table :goals do |t|
       t.string :mission
       t.string :outcome, default: 'Get after it!'
-      t.datetime :deadline
+      #t.datetime :deadline
 
       t.timestamps
     end
