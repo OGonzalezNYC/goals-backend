@@ -11,7 +11,8 @@ class Api::V1::StepsController < ApplicationController
   def create
     @step = @goal.steps.new(step_params)
     if @step.save
-      render json: @step, status: 200
+      #render json: @step, status: 200
+      render json: @goal, status: 200 #sending back the GOAL to which the newly created STEP belongs instead of the newly created STEP itself; doing this in order to make things easier on the front end. 
     else
       render json: {error: 'Unable to create step.'}, status: 400
     end
