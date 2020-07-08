@@ -25,12 +25,18 @@ class Api::V1::GoalsController < ApplicationController
 
 
   def update
+#binding.pry
     @goal = Goal.find(params[:id])
-    if @goal.update(goal_params)
-      render json: @goal, status: 200
-    else
-      render json: {error: 'Unable to edit goal.'}, status: 400
-    end
+    #if @goal.update(goal_params)
+
+    @goal.update(outcome: params["goal"]["outcome"])
+      #render json: @goal, status: 200
+    @goal.save
+    render json: @goal
+
+    # else
+    #   render json: {error: 'Unable to edit goal.'}, status: 400
+    # end
   end
 
 

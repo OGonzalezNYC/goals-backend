@@ -12,7 +12,7 @@ class Api::V1::StepsController < ApplicationController
     @step = @goal.steps.new(step_params)
     if @step.save
       #render json: @step, status: 200
-      render json: @goal, status: 200 #sending back the GOAL to which the newly created STEP belongs instead of the newly created STEP itself; doing this in order to make things easier on the front end. 
+      render json: @goal, status: 200 #sending back the GOAL to which the newly created STEP belongs instead of the newly created STEP itself; doing this in order to make things easier on the front end.
     else
       render json: {error: 'Unable to create step.'}, status: 400
     end
@@ -26,10 +26,14 @@ class Api::V1::StepsController < ApplicationController
 
 
   def destroy
+#binding.pry
     @step = Step.find(params[:id])
+    #step = Step.find(params["id"])
+    @goal = Goal.find(@step.goal_id)
+    #goal = Goal.find(step.goal_id])
     @step.destroy
 #    @step.delete
-#    render json: {stepId: step.id}
+    render json: @goal
   end
 
 
