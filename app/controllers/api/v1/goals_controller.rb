@@ -41,10 +41,13 @@ class Api::V1::GoalsController < ApplicationController
 
 
   def destroy
+    #@goals = Goal.all
+    #render json: @goals
     @goal = Goal.find(params[:id])
     @goal.destroy
 #    @goal.delete
 #    render json: {goalId: goal.id}
+    render json: @goal
   end
 
 
